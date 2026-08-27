@@ -184,8 +184,8 @@
         </a>
     </section>
 
-    <!-- Countdown Timer Section -->
-    <section id="countdown" class="py-16 px-4 bg-cream">
+    <!-- Countdown Timer Section倒數計時 -->
+        <section id="countdown" class="py-16 px-4 bg-cream">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-10">
                 <span class="font-cormorant italic text-lg text-fogpink-dark block">Counting Down To Our Big Day</span>
@@ -369,7 +369,7 @@
                         <div class="accordion-content">
                             <div class="p-5 text-sm text-cocoa/80 border-t border-oatmeal/60 space-y-3 font-light">
                                 <p><strong class="font-medium text-cocoa">地址：</strong><span class="whitespace-nowrap font-medium">臺北市信義區西村里松仁路38號</span></p>
-                                <a href="https://maps.google.com/?q=臺北市信義區西村里松仁路38號" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs bg-fogpink text-cocoa px-4 py-2 rounded-lg font-medium hover:bg-fogpink-dark transition">
+                                <a href="https://maps.app.goo.gl/Zj5RWCQG52UgpoGYA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs bg-fogpink text-cocoa px-4 py-2 rounded-lg font-medium hover:bg-fogpink-dark transition">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     <span>開啟 Google 地圖導航</span>
                                 </a>
@@ -560,19 +560,137 @@
     <script>
         var submitted = false;
 
-        // --- 1. Countdown Timer Logic ---
-        const targetDate = new Date("2027-01-17T12:30:00").getTime();
+        // --- Everything that needs the page's HTML elements runs after the
+        //     DOM has finished loading. ---
+        document.addEventListener('DOMContentLoaded', function () {
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+            // --- 1. Countdown Timer Logic ---
+            // Wedding Time: Jan 17, 2027 at 12:00 (noon), Taipei time
+            const targetDate = new Date('2027-01-17T12:00:00+08:00').getTime();
 
-            if (distance < 0) {
-                document.getElementById("cd-days").innerText = "00";
-                document.getElementById("cd-hours").innerText = "00";
-                document.getElementById("cd-minutes").innerText = "00";
-                document.getElementById("cd-seconds").innerText = "00";
-                return;
+            function updateTimer() {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference > 0) {
+                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                    document.getElementById("cd-days").innerText = String(days).padStart(2, '0');
+                    document.getElementById("cd-hours").innerText = String(hours).padStart(2, '0');
+                    document.getElementById("cd-minutes").innerText = String(minutes).padStart(2, '0');
+                    document.getElementById("cd-seconds").innerText = String(seconds).padStart(2, '0');
+                } else {
+                    document.getElementById("cd-days").innerText = "00";
+                    document.getElementById("cd-hours").innerText = "00";
+                    document.getElementById("cd-minutes").innerText = "00";
+                    document.getElementById("cd-seconds").innerText = "00";
+                }
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 *
+            setInterval(updateTimer, 1000);
+            updateTimer();
+
+            // --- 2. Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- 3. Accordion Interactivity ---
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('.fa-chevron-down');
+
+                    const isOpen = content.classList.contains('open');
+
+                    // Close all accordions
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                    document.querySelectorAll('.accordion-header .fa-chevron-down').forEach(i => i.classList.remove('rotate-180'));
+
+                    // Toggle current if not already open
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        if (icon) icon.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // --- 4. Dynamic Form Logic ---
+            const attendanceSelect = document.getElementById('attendanceSelect');
+            const conditionalBlock = document.getElementById('conditionalBlock');
+
+            if (attendanceSelect) {
+                attendanceSelect.addEventListener('change', function () {
+                    const val = parseInt(this.value, 10);
+                    if (val > 0) {
+                        conditionalBlock.classList.add('visible');
+                    } else {
+                        conditionalBlock.classList.remove('visible');
+                    }
+                });
+            }
+
+            // --- 5. Form Submission Handling ---
+            const weddingForm = document.getElementById('weddingForm');
+
+            if (weddingForm) {
+                weddingForm.addEventListener('submit', function () {
+                    submitted = true;
+                });
+            }
+
+        }); // <-- end of DOMContentLoaded
+
+        // --- These two functions are called directly from HTML attributes
+        //     (onload="..." on the iframe, onclick="..." on the button), so
+        //     they must stay in the global scope, OUTSIDE DOMContentLoaded. ---
+
+        function handleFormSuccess() {
+            if (submitted) {
+                const modal = document.getElementById('successModal');
+                const modalContent = document.getElementById('modalContent');
+                const weddingForm = document.getElementById('weddingForm');
+                const conditionalBlock = document.getElementById('conditionalBlock');
+
+                if (modal && modalContent) {
+                    modal.classList.remove('opacity-0', 'pointer-events-none');
+                    modalContent.classList.remove('scale-95');
+                    modalContent.classList.add('scale-100');
+                }
+
+                if (weddingForm) weddingForm.reset();
+                if (conditionalBlock) conditionalBlock.classList.remove('visible');
+                submitted = false;
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            const modalContent = document.getElementById('modalContent');
+
+            if (modal && modalContent) {
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+    </script>
+</body>
+</html>
