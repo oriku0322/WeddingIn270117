@@ -339,29 +339,55 @@
                 <!-- Time & Venue Card -->
                 <div
                     class="bg-white/70 backdrop-blur rounded-2xl p-6 sm:p-8 shadow-card border border-oatmeal flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
+
+                    <article class="v-card rounded-[22px] p-7 sm:p-9">
+                        <div class="flex items-center gap-4 mb-7">
                             <div
-                                class="w-10 h-10 rounded-full bg-fogpink/30 flex items-center justify-center text-fogpink-dark">
-                                <i class="fa-regular fa-clock text-lg"></i>
+                                class="w-11 h-11 rounded-full border border-gold/30 flex items-center justify-center bg-champagne/55 flex-shrink-0">
+                                <i class="fa-regular fa-clock text-espresso/65"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-cocoa">時間與地點</h3>
+                            <div>
+                                <span class="font-cormorant italic text-blush-deep text-lg">
+                                    The Wedding Banquet
+                                </span>
+                                <h3 class="font-serif text-xl font-semibold keep-title">
+                                    午宴資訊
+                                </h3>
+                            </div>
                         </div>
-                        <ul class="space-y-3 text-sm sm:text-base text-cocoa/80 font-light">
-                            <li class="flex items-start">
-                                <span class="font-semibold text-cocoa w-20 flex-shrink-0">日期：</span>
-                                <span>2027 年 01 月 17 日（星期日）</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="font-semibold text-cocoa w-20 flex-shrink-0">時間：</span>
-                                <span>12:00 入席 | 12:30 準時開席</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="font-semibold text-cocoa w-20 flex-shrink-0">地點：</span>
-                                <span><strong class="whitespace-nowrap font-medium text-cocoa">台北寒舍艾美酒店</strong></span>
-                            </li>
-                        </ul>
-                    </div>
+
+                        <div class="space-y-5 text-sm sm:text-base">
+                            <div>
+                                <p class="text-[11px] tracking-[.18em] text-blush-deep mb-1">
+                                    DATE
+                                </p>
+                                <p class="font-medium">
+                                    2027 年 01 月 17 日（星期日）
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-[11px] tracking-[.18em] text-blush-deep mb-1">
+                                    TIME
+                                </p>
+                                <p class="font-medium">
+                                    12:00 入席
+                                    <span class="text-gold mx-1">|</span>
+                                    12:30 準時開席
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-[11px] tracking-[.18em] text-blush-deep mb-1">
+                                    VENUE
+                                </p>
+                                <p class="font-medium">
+                                    台北寒舍艾美酒店 二樓軒轅廳
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
                 </div>
 
                 <!-- Gallery Card (相簿輪播) -->
@@ -433,34 +459,31 @@
                             class="w-10 h-10 rounded-full bg-fogpink/30 flex items-center justify-center text-fogpink-dark">
                             <i class="fa-solid fa-location-dot text-lg"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-cocoa">交通指引 TRANSPORTATION</h3>
+                        <h3 class="text-xl font-bold text-cocoa">如何前往 Getting There</h3>
                     </div>
                 </div>
 
                 <!-- Accordion Items -->
                 <div class="space-y-4">
+                    <!-- Item 1: Address & Map  (採用非折疊格式)-->
+                    <div class="border border-oatmeal rounded-xl overflow-hidden bg-cream/30 p-5 space-y-4">
+                        <!-- 標題區域：採用金色的水滴型地標定位點，文字維持原本的 text-cocoa -->
+                        <div class="flex items-center space-x-2 text-base font-bold text-cocoa">
+                            <i class="fa-solid fa-location-dot text-gold text-lg"></i>
+                            <span>飯店地址 Location</span>
+                        </div>
 
-                    <!-- Item 1: Address & Map -->
-                    <div class="border border-oatmeal rounded-xl overflow-hidden bg-cream/30">
-                        <button type="button"
-                            class="accordion-header w-full px-5 py-4 flex items-center justify-between text-left font-semibold text-cocoa hover:bg-oatmeal/20 transition">
-                            <span class="flex items-center space-x-2">
-                                <i class="fa-solid fa-map-pin text-fogpink-dark"></i>
-                                <span>飯店地址 Location</span>
-                            </span>
-                            <i class="fa-solid fa-chevron-down text-cocoa/50 transition-transform duration-300"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="p-5 text-sm text-cocoa/80 border-t border-oatmeal/60 space-y-3 font-light">
-                                <p><strong class="font-medium text-cocoa">地址：</strong><span
-                                        class="whitespace-nowrap font-medium">臺北市信義區西村里松仁路38號</span></p>
-                                <a href="https://maps.app.goo.gl/Zj5RWCQG52UgpoGYA" target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="inline-flex items-center space-x-2 text-xs bg-fogpink text-cocoa px-4 py-2 rounded-lg font-medium hover:bg-fogpink-dark transition">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    <span>開啟 Google 地圖導航</span>
-                                </a>
-                            </div>
+                        <p class="text-sm sm:text-base text-cocoa font-semibold leading-relaxed">
+                            台北寒舍艾美酒店：臺北市信義區松仁路38號
+                        </p>
+
+                        <div>
+                            <a href="https://maps.app.goo.gl/Zj5RWCQG52UgpoGYA" target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center space-x-2 text-sm bg-fogpink text-cocoa px-5 py-2.5 rounded-lg font-bold hover:bg-fogpink-dark transition shadow-sm">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-cocoa"></i>
+                                <span class="text-cocoa">開啟 Google 地圖導航</span>
+                            </a>
                         </div>
                     </div>
 
@@ -511,12 +534,37 @@
     <!-- RSVP Form Section -->
     <section id="rsvp" class="py-20 px-4 bg-oatmeal/20">
         <div class="max-w-2xl mx-auto">
-
+            <!-- RSVP Form Card -->
             <div class="text-center mb-10">
-                <span class="font-cormorant italic text-lg text-fogpink-dark">RSVP Form</span>
-                <h2 class="text-3xl font-bold text-cocoa tracking-wider mt-1">出席回函</h2>
-                <p class="text-sm text-cocoa/70 mt-2 font-light">請於 2026 年 12 月 15 日前填寫回覆，方便我們為您安排最佳席位</p>
-                <div class="w-12 h-0.5 bg-fogpink mx-auto mt-3"></div>
+                <span class="section-eyebrow">RSVP Form</span>
+
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold tracking-[.12em] mt-3">
+                    出席回函
+                </h2>
+
+                <p class="text-base sm:text-lg text-[#4A3E3D] mt-5 leading-8">
+                    敬請撥冗填寫出席回覆
+                    <br>
+                    讓我們提前為您安排座位
+                </p>
+
+                <div class="inline-flex flex-col items-center mt-5 px-6 py-4
+                bg-[#F3EAE0] border border-[#D8C3A5] rounded-lg">
+                    <span class="text-sm sm:text-base font-medium text-[#6B5140]">
+                        回覆截止日期
+                    </span>
+
+                    <span class="text-xl sm:text-2xl font-bold tracking-wide
+                     text-[#4A3E3D] mt-1">
+                        2026 年 11 月 15 日前
+                    </span>
+                </div>
+
+                <div class="flex items-center justify-center gap-3 mt-5">
+                    <span class="w-14 h-px bg-gold/50"></span>
+                    <span class="font-cormorant text-gold">✦</span>
+                    <span class="w-14 h-px bg-gold/50"></span>
+                </div>
             </div>
 
             <!-- Form Card -->
@@ -541,16 +589,19 @@
                             class="w-full px-4 py-3 rounded-xl border border-oatmeal bg-white focus:outline-none focus:ring-2 focus:ring-fogpink focus:border-transparent text-cocoa transition">
                     </div>
 
-                    <!-- Email Field -->
+                    <!-- Phone Field -->
                     <div>
                         <label class="block text-sm font-semibold text-cocoa mb-2">
-                            電子信箱 <span
-                                class="font-cormorant tracking-wider text-xs font-normal text-cocoa/60 uppercase">EMAIL</span>
+                            手機號碼 <span
+                                class="font-cormorant tracking-wider text-xs font-normal text-cocoa/60 uppercase">PHONE</span>
                             <span class="text-rose-500">*</span>
                         </label>
-                        <input type="email" name="entry.1168724549" required placeholder="example@email.com"
+                        <input type="tel" name="entry.1168724549" required placeholder="請輸入正確的 10 位數手機號碼，例如 0912345678"
+                            pattern="09\d{8}"
                             class="w-full px-4 py-3 rounded-xl border border-oatmeal bg-white focus:outline-none focus:ring-2 focus:ring-fogpink focus:border-transparent text-cocoa transition">
                     </div>
+
+
 
                     <!-- Relationship Field -->
                     <div>
@@ -803,7 +854,7 @@
                 submitted = false;
             }
         }
-    
+
 
         function closeModal() {
             const modal = document.getElementById('successModal');
@@ -823,8 +874,7 @@
             "https://i.postimg.cc/LskMppLr/VINCENT-64.jpg",
             "https://i.postimg.cc/q7452C68/VINCENT-322.jpg",
             "https://i.postimg.cc/FRQChkN1/VINCENT-166.jpg",
-            "https://i.postimg.cc/50RHwLy2/VINCENT-207.jpg",
-            "https://i.postimg.cc/6QGHNpXT/S-67280907.jpg"
+            "https://i.postimg.cc/50RHwLy2/VINCENT-207.jpg"
         ];
 
         let currentGalleryIndex = 0;
